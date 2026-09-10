@@ -1,1 +1,412 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Hybrid Developer & Designer</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Prompt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Root Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #111111;
+            --text-secondary: #666666;
+            --accent-gray: #f4f4f5;
+            --border-color: #e4e4e7;
+            --transition: all 0.3s ease;
+            --font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+        }
 
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #F4F4F5;
+            color:#FFFFFF;
+            font-family: #FFFFFF;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 900 px;
+            margin: 0 auto;
+            padding: 0 24 px;
+        }
+
+        section {
+            padding: 96px 0;
+            border-bottom: 1px solid var;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            font-size: 0.9rem;
+            color: #FFFFFF;
+        }
+
+        .nav-links a:hover {
+            color: #FFFFFF;
+            transition: all 0.15s ease-out;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            padding-top: 180px;
+            padding-bottom: 120px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        /* --- About Section --- */
+        .about-text {
+            font-size: 1.1rem;
+            color: #FFFFFF(--text-secondary);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .about-text strong {
+            color: #ff0000(--text-primary);
+            font-weight: 500;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: #ff0000(--text-secondary);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--accent-gray);
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .project-card {
+            display: block;
+            group: hover;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 380px;
+            background-color: #ff0000(--accent-gray);
+            border-radius: 6px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* จำลองภาพ Placeholder Minimal */
+        .project-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.15s ease-out;
+        }
+
+        .project-card:hover .project-image-placeholder {
+            transform: scale(1.02);
+            color: #ff0000(--text-primary);
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .project-desc {
+            color: #ff0000(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            color: #ff0000(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-email {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            border-bottom: 2px solid var(--text-primary);
+            width: fit-content;
+            padding-bottom: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            list-style: none;
+        }
+
+        .social-links a {
+            color: #ff0000(--text-secondary);
+            font-size: 0.95rem;
+            transition: all 0.15s ease-out;
+        }
+
+        .social-links a:hover {
+            color: #ff0000(--text-primary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 48px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .contact-email {
+                font-size: 1.4rem;
+            }
+            .project-image {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">YOURNAME.</a>
+            <ul class="nav-links">
+                <li><a href="#about">ประวัติ</a></li>
+                <li><a href="#skills">ทักษะ</a></li>
+                <li><a href="#projects">ผลงาน</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <!-- 1. Hero / หน้าต้อนรับ -->
+        <section id="hero">
+            <h1 class="hero-title">Crafting digital products with code & design.</h1>
+            <p class="hero-subtitle">สวัสดีครับ ผมเป็น <strong>Hybrid Developer & Designer</strong> ที่หลงใหลการสร้างสรรค์ประสบการณ์บนเว็บที่สวยงาม ใช้งานง่าย และมีประสิทธิภาพ</p>
+        </section>
+
+        <!-- 2. About / ประวัติ -->
+        <section id="about">
+            <div class="section-title">01 / About Me</div>
+            <div class="about-text">
+                <p>ผมทำงานอยู่ตรงจุดตัดระหว่าง <strong>Design</strong> และ <strong>Technology</strong> ด้วยมุมมองของนักออกแบบ ผมให้ความสำคัญกับความสวยงาม พฤติกรรมผู้ใช้ (UX/UI) และความประณีตในทุกรายละเอียด ขณะเดียวกัน ในฐานะนักพัฒนา ผมเขียนโค้ดที่สะอาด (Clean Code) รองรับการใช้งานจริง และมีประสิทธิภาพสูง เพื่อเปลี่ยนไอเดียให้กลายเป็นผลิตภัณฑ์ดิจิทัลที่ใช้งานได้จริง</p>
+            </div>
+        </section>
+
+        <!-- 3. Skills / ทักษะ -->
+        <section id="skills">
+            <div class="section-title">02 / Skills & Expertise</div>
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h3>Design</h3>
+                    <ul class="skill-list">
+                        <li>UI/UX Design <span>Figma</span></li>
+                        <li>Design Systems <span>Tokens / Components</span></li>
+                        <li>Wireframing & Prototyping <span>Prototyping</span></li>
+                        <li>Visual Identity <span>Branding</span></li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Development</h3>
+                    <ul class="skill-list">
+                        <li>Frontend <span>HTML / CSS / JS</span></li>
+                        <li>Frameworks <span>React / Next.js</span></li>
+                        <li>Styling <span>Tailwind CSS / SCSS</span></li>
+                        <li>Tools & Version Control <span>Git / GitHub</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. Projects / ผลงาน -->
+        <section id="projects">
+            <div class="section-title">03 / Selected Works</div>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <a href="#" class="project-card" target="_blank">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">[ Project Preview Image 1 ]</div>
+                    </div>
+                    <div class="project-info">
+                        <div>
+                            <div class="project-title">Minimalist E-Commerce UI</div>
+                            <div class="project-desc">ออกแบบ UI/UX และพัฒนา Frontend แพลตฟอร์มช้อปปิ้งสินค้าสไตล์มินิมอล</div>
+                        </div>
+                        <span class="project-tag">Design & Dev</span>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="#" class="project-card" target="_blank">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">[ Project Preview Image 2 ]</div>
+                    </div>
+                    <div class="project-info">
+                        <div>
+                            <div class="project-title">SaaS Dashboard Design System</div>
+                            <div class="project-desc">สร้าง Design System และพัฒนา UI Component Library สำหรับระบบบริหารจัดการ</div>
+                        </div>
+                        <span class="project-tag">Design System</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- 5. Contact / ช่องทางการติดต่อ -->
+        <section id="contact">
+            <div class="section-title">04 / Get In Touch</div>
+            <div class="contact-content">
+                <p style="color: #F4F4F5(--text-secondary); font-weight: 300;">หากคุณมีโปรเจกต์ที่น่าสนใจ หรือต้องการร่วมงานกัน สามารถติดต่อผมได้เสมอครับ</p>
+                <a href="mailto:your.email@example.com" class="contact-email">your.email@example.com</a>
+                
+                <ul class="social-links">
+                    <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://dribbble.com" target="_blank">Dribbble / Figma</a></li>
+                    <li><a href="https://twitter.com" target="_blank">Twitter (X)</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Designed & Built with simplicity.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
